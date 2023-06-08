@@ -16,13 +16,13 @@ import org.jsoup.select.Elements;
 import models.Character;
 import com.fasterxml.jackson.databind.ObjectMapper;
 public class NKSCharacterCrawler implements BaseCrawler{
-    private final int numOfPages = 291;
+    private final int NUM_OF_PAGES = 291;
     private final String BASE_URL = "https://nguoikesu.com/";
     public List<String> getAllCharacterURL(){
         List<String> listURLs = new ArrayList<String>();
-        for(int page = 0; page < numOfPages; ++page) {
+        for(int page = 0; page < NUM_OF_PAGES; ++page) {
             try {
-               Document doc = Jsoup.connect(BASE_URL + "nhan-vat?start=" + Integer.toString(page * 5)).get();
+               Document doc = Jsoup.connect(BASE_URL + "nhan-vat?start=" + Integer.toString(page * 5)).userAgent("Jsoup client").timeout(20000).get();
 
                 Elements elmsA =  doc.select("h2[itemprop=name] a");
                 for(Element ref : elmsA){
@@ -53,7 +53,7 @@ public class NKSCharacterCrawler implements BaseCrawler{
             for(String url : listURLs){
                 try
                 {
-                    Document doc = Jsoup.connect(url).get();
+                    Document doc = Jsoup.connect(url).userAgent("Jsoup client").timeout(20000).get();
                     Character tempChar = new Character();
                     String name = doc.select("div.page-header h2").text();
                     //System.out.println(name);
@@ -61,7 +61,6 @@ public class NKSCharacterCrawler implements BaseCrawler{
                     Elements infoBox = articleBody.select("div.infobox");
                     String namSinh = "Không rõ";
                     String namMat = "Không rõ";
-                    String trieuDai = "Không rõ";
                     if(infoBox.size() > 0){
                         Elements infoTable = infoBox.get(0).select("table").get(0).select("tbody tr");
                         for(Element rows : infoTable){

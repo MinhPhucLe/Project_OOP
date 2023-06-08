@@ -3,13 +3,11 @@ package models;
 public class Character extends BaseModel {
     private String namSinh;
     private String namMat;
-    private String trieuDai;
     public Character(String name, String desc, String namSinh, String namMat, String trieuDai){
         super.name = name;
         super.desc = desc;
         this.namSinh = namSinh;
         this.namMat = namMat;
-        this.trieuDai = trieuDai;
     }
 
     public String getNamSinh() {
@@ -33,7 +31,6 @@ public class Character extends BaseModel {
         super.desc = null;
         this.namMat = null;
         this.namSinh = null;
-        this.trieuDai = null;
     }
 
     @Override
@@ -41,7 +38,6 @@ public class Character extends BaseModel {
         return "Character{" +
                 "namSinh='" + namSinh + '\'' +
                 ", namMat='" + namMat + '\'' +
-                ", trieuDai='" + trieuDai + '\'' +
                 ", name='" + name + '\'' +
                 ", desc='" + desc + '\'' +
                 '}';
