@@ -168,6 +168,5 @@ public class NKSCharacterCrawler implements BaseCrawler{
         catch (IOException err){
             err.printStackTrace();
         }
-
     }
 }
