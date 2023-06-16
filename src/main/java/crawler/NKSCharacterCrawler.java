@@ -3,9 +3,7 @@ package crawler;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,7 +11,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import models.Character;
+import models.CharacterModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 public class NKSCharacterCrawler implements BaseCrawler{
     private final int NUM_OF_PAGES = 291;
@@ -54,7 +52,7 @@ public class NKSCharacterCrawler implements BaseCrawler{
                 try
                 {
                     Document doc = Jsoup.connect(url).userAgent("Jsoup client").timeout(20000).get();
-                    Character tempChar = new Character();
+                    CharacterModel tempChar = new CharacterModel();
                     String name = doc.select("div.page-header h2").text();
                     //System.out.println(name);
                     Elements articleBody = doc.select("div[itemprop=articleBody]");

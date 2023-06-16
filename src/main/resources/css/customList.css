@@ -1,0 +1,8 @@
+#searchTf {
+    -fx-border-color: red;
+}
+
+#root {
+    -fx-background-image: url("../image/list-background.png");
+    -fx-background-size: cover;
+}

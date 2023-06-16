@@ -1,9 +1,7 @@
 package crawler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import models.Character;
-import models.Events;
-import org.jsoup.Connection;
+import models.EventModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -114,7 +112,7 @@ public class TVLSEvents implements BaseCrawler {
                             }
                         }
                     }
-                    Events tempEvent = new Events();
+                    EventModel tempEvent = new EventModel();
                     tempEvent.setName(name);
                     tempEvent.setTime(time);
                     tempEvent.setDesc(description);

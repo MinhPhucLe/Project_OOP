@@ -1,0 +1,17 @@
+#layout {
+    -fx-background-image: url("../image/background-image.jpg");
+    -fx-background-size: cover;
+}
+.button {
+    -fx-background-color: rgb(196, 164, 132,0.55) ;
+    -fx-font-size: 28px;
+    -fx-text-fill: #fafafa;
+    -fx-font-family: "Times New Roman",sans-serif;
+    -fx-max-width: 400px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-cursor: hand;
+}
+.button:hover{
+    -fx-background-color: rgb(196, 164, 132,0.95);
+}

@@ -1,8 +1,10 @@
 package models;
 
-import java.util.List;
+import util.UrlContainer;
 
-public class Sites extends BaseModel{
+import java.util.*;
+
+public class SiteModel extends BaseModel implements CustomInfo{
     private List<String> relatedEvents;
     private List<String> relatedCharacters;
 
@@ -22,17 +24,32 @@ public class Sites extends BaseModel{
         this.relatedCharacters = relatedCharacters;
     }
 
-    public Sites(String name, String desc, List<String> relatedEvents, List<String> relatedCharacters) {
+    public SiteModel(String name, String desc, List<String> relatedEvents, List<String> relatedCharacters) {
         super.name = name;
         super.desc = desc;
         this.relatedEvents = relatedEvents;
         this.relatedCharacters = relatedCharacters;
     }
 
-    public Sites() {
+    public SiteModel() {
         super.name = null;
         super.desc = null;
         this.relatedEvents = null;
         this.relatedCharacters = null;
+    }
+
+    @Override
+    public Map<String, Object> getMapDescription() {
+        Map<String , Object> res = new HashMap<>();
+        res.put("name",name);
+        res.put("desc",desc);
+        res.put("relatedEvents", relatedEvents);
+        res.put("relatedCharacters",relatedCharacters);
+        return res;
+    }
+
+    @Override
+    public String getUrl() {
+        return UrlContainer.DIA_DANH_URL + name;
     }
 }

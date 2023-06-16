@@ -3,15 +3,13 @@ package crawler;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import models.Character;
+import models.CharacterModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 public class TVLSCharacterCrawler implements BaseCrawler {
     private final int NUM_OF_PAGES = 41;
@@ -39,7 +37,7 @@ public class TVLSCharacterCrawler implements BaseCrawler {
     public void crawlData() {
         List<String> listURLs = getAllCharacterURL();
         int entitiesCrawled = 0;
-        Character tempChar = new Character();
+        CharacterModel tempChar = new CharacterModel();
         try (Writer writer = new FileWriter("src/main/java/json/tvlschar.json")) {
             writer.write('[');
             for (String url : listURLs) {

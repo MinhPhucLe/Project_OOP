@@ -4,19 +4,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import crawler.BaseCrawler;
-import models.Character;
+import models.DynastyModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import models.Dynasty;
 
 import java.io.Writer;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,7 +85,7 @@ public class VSDynasty implements BaseCrawler {
                             }
                         }
                     }
-                    Dynasty tempDy = new Dynasty();
+                    DynastyModel tempDy = new DynastyModel();
                     tempDy.setTime(reign);
                     tempDy.setName(name);
                     tempDy.setDesc(description);

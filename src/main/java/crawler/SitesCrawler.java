@@ -2,17 +2,14 @@ package crawler;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import models.Sites;
+import models.SiteModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import models.Character;
 import com.fasterxml.jackson.databind.ObjectMapper;
 public class SitesCrawler implements BaseCrawler{
     private final int NUM_OF_PAGES = 10;
@@ -79,7 +76,7 @@ public class SitesCrawler implements BaseCrawler{
                         }
 
                     }
-                    Sites tempSites = new Sites(name, desc, relatedEvent, relatedCharacter);
+                    SiteModel tempSites = new SiteModel(name, desc, relatedEvent, relatedCharacter);
                     ObjectMapper mapper = new ObjectMapper();
                     System.out.println(mapper.writeValueAsString(tempSites));
                     writer.write(mapper.writeValueAsString(tempSites));

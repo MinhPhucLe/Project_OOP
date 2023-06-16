@@ -1,15 +1,18 @@
 package models;
 
-public class Character extends BaseModel {
+import util.UrlContainer;
+
+import java.util.*;
+
+public class CharacterModel extends BaseModel implements CustomInfo{
     private String namSinh;
     private String namMat;
-    public Character(String name, String desc, String namSinh, String namMat, String trieuDai){
+    public CharacterModel(String name, String desc, String namSinh, String namMat){
         super.name = name;
         super.desc = desc;
         this.namSinh = namSinh;
         this.namMat = namMat;
     }
-
     public String getNamSinh() {
         return namSinh;
     }
@@ -26,7 +29,7 @@ public class Character extends BaseModel {
         this.namMat = namMat;
     }
 
-    public Character() {
+    public CharacterModel() {
         super.name = null;
         super.desc = null;
         this.namMat = null;
@@ -41,5 +44,20 @@ public class Character extends BaseModel {
                 ", name='" + name + '\'' +
                 ", desc='" + desc + '\'' +
                 '}';
+    }
+
+    @Override
+    public String getUrl(){
+        return UrlContainer.NHAN_VAT_URL + '/' +  name;
+    }
+
+    @Override
+    public Map<String ,Object> getMapDescription(){
+        Map<String,Object> res = new HashMap<>();
+        res.put("name",name );
+        res.put("desc",desc);
+        res.put("namSinh" ,namSinh);
+        res.put("namMat" , namMat);
+        return res;
     }
 }

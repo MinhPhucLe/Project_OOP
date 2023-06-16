@@ -5,16 +5,12 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import crawler.BaseCrawler;
+import models.CharacterModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.Writer;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import models.Character;
 
 public class TVLSCCharacter implements BaseCrawler {
     /*String dataurl = "jdbc:mysql://localhost:3306/java";
@@ -115,7 +111,7 @@ public class TVLSCCharacter implements BaseCrawler {
                                     }
                                 }
                             }
-                            Character tempChar = new Character();
+                            CharacterModel tempChar = new CharacterModel();
                             tempChar.setNamSinh(namSinh);
                             tempChar.setNamMat(namMat);
                             tempChar.setName(ten);

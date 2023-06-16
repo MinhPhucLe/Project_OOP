@@ -1,8 +1,12 @@
 package models;
 
-import java.util.List;
+import util.UrlContainer;
 
-public class Events extends BaseModel{
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class EventModel extends BaseModel implements CustomInfo{
     private List<String> relativeSite;
     private List<String> relativeChar;
 
@@ -40,5 +44,21 @@ public class Events extends BaseModel{
         this.time = time;
         this.relativeChar = relativeChar;
         this.relativeSite = relativeSite;
+    }
+
+    @Override
+    public String getUrl() {
+        return UrlContainer.SU_KIEN_URL + '/' + name;
+    }
+
+    @Override
+    public Map<String ,Object> getMapDescription(){
+        Map<String,Object> res = new HashMap<>();
+        res.put("name",name );
+        res.put("desc",desc);
+        res.put("time",time);
+        res.put("relativeChar",relativeChar);
+        res.put("relativeSite",relativeSite);
+        return res;
     }
 }
