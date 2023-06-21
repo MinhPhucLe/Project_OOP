@@ -38,11 +38,13 @@ public class TVLSEvents implements BaseCrawler {
     }
     @Override
     public void crawlData() {
+        int dem = 0;
         List<String> urls = getUrls();
         try (Writer writer = new FileWriter("src/main/java/json/TVLSEvents.json")) {
             writer.write('[');
             for (String url : urls) {
                 try {
+                    dem++;
                     Document doc = Jsoup.connect(url).get();
                     String name;
                     String description = "";
@@ -121,7 +123,8 @@ public class TVLSEvents implements BaseCrawler {
                     ObjectMapper mapper = new ObjectMapper();
                     System.out.println(mapper.writeValueAsString(tempEvent));
                     writer.write(mapper.writeValueAsString(tempEvent));
-                    writer.write(",\n");
+                    if (dem != 371) writer.write(",");
+                    writer.write("\n");
                     ///System.out.println("here: " + name);
                 } catch (IOException err) {
                     err.printStackTrace();

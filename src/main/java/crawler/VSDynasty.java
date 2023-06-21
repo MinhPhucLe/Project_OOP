@@ -1,7 +1,6 @@
 package crawler;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.DynastyModel;
@@ -10,7 +9,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +91,8 @@ public class VSDynasty implements BaseCrawler {
                     ObjectMapper mapper = new ObjectMapper();
                     System.out.println(mapper.writeValueAsString(tempDy));
                     writer.write(mapper.writeValueAsString(tempDy));
-                    writer.write(",\n");
+                    if (dem != 24) writer.write(",");
+                    writer.write("\n");
                     System.out.println("Thoi dai thu " + dem + ":");
                     for (int i = 0; i < kings.size(); ++i) {
                         System.out.println("Vua la: " + kings.get(i));
@@ -118,9 +117,31 @@ public class VSDynasty implements BaseCrawler {
                 }
                 System.out.println("Here: " + dem);
             }
+            /*String content = readFileContent("src/main/java/json/VSDynasty.json");
+            System.out.println("Herre: " + content);
+            content = content.substring(0, content.length() - 1);
+            writer.flush();
+            writer.write(content);*/
             writer.write(']');
         } catch (IOException err) {
             err.printStackTrace();
         }
     }
+    private static String readFileContent(String filePath) throws IOException {
+        File file = new File(filePath);
+        StringBuilder content = new StringBuilder();
+
+        try (FileReader fileReader = new FileReader(file);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                content.append(line);
+            }
+        }
+
+        return content.toString();
+    }
+
 }
+
+

@@ -38,9 +38,11 @@ public class TVLSCharacterCrawler implements BaseCrawler {
         List<String> listURLs = getAllCharacterURL();
         int entitiesCrawled = 0;
         CharacterModel tempChar = new CharacterModel();
+        int dem = 0;
         try (Writer writer = new FileWriter("src/main/java/json/tvlschar.json")) {
             writer.write('[');
             for (String url : listURLs) {
+                dem++;
                 Document doc = Jsoup.connect(url).userAgent("Jsoup client").timeout(20000).get();
                 String name = "";
                 String namSinh = "";
@@ -84,7 +86,8 @@ public class TVLSCharacterCrawler implements BaseCrawler {
                 ObjectMapper mapper = new ObjectMapper();
                 System.out.println(mapper.writeValueAsString(tempChar));
                 writer.write(mapper.writeValueAsString(tempChar));
-                writer.write(",\n");
+                if(dem != 809) writer.write(",");
+                writer.write("\n");
             }
             writer.write(']');
         } catch (IOException err) {

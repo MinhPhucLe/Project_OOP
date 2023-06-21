@@ -21,6 +21,7 @@ public class TVLSCCharacter implements BaseCrawler {
     public void crawlData() {
         try (Writer writer = new FileWriter("src/main/java/json/TVLSC.json")) {
             writer.write('[');
+            int dem = 0;
             for (int i = 1; i <= 42; ++i) {
                 try {
                     Document doc;
@@ -35,6 +36,7 @@ public class TVLSCCharacter implements BaseCrawler {
                     for (Element same : sames) {
                         Elements links = same.getElementsByClass("col-md-12 fadeInDown wow");
                         for (Element link : links) {
+                            dem++;
                             String url = link.getElementsByTag("a").attr("href");
                             Document docs = Jsoup.connect(url).get();
                             Elements frsts = docs.select("#content > div > div > div > div.bs-blog-post.single > div > h1 > a");
@@ -136,7 +138,8 @@ public class TVLSCCharacter implements BaseCrawler {
                             ObjectMapper mapper = new ObjectMapper();
                             System.out.println(mapper.writeValueAsString(tempChar));
                             writer.write(mapper.writeValueAsString(tempChar));
-                            writer.write(",\n");
+                            if (dem != 418) writer.write(",");
+                            writer.write("\n");
 
                         }
                     }

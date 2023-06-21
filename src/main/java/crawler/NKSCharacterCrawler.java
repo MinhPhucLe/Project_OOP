@@ -22,7 +22,7 @@ public class NKSCharacterCrawler implements BaseCrawler{
             try {
                Document doc = Jsoup.connect(BASE_URL + "nhan-vat?start=" + Integer.toString(page * 5)).userAgent("Jsoup client").timeout(20000).get();
 
-                Elements elmsA =  doc.select("h2[itemprop=name] a");
+                Elements elmsA =  doc.select("h2 a");
                 for(Element ref : elmsA){
                     String characterURL = BASE_URL + ref.attr("href");
                     listURLs.add(characterURL);
@@ -46,9 +46,11 @@ public class NKSCharacterCrawler implements BaseCrawler{
     public void crawlData(){
         List<String> listURLs = getAllCharacterURL();
         int entitiesCrawled = 0;
+        int dem = 0;
         try(Writer writer = new FileWriter("src/main/java/json/nkschar.json")){
             writer.write('[');
             for(String url : listURLs){
+                dem++;
                 try
                 {
                     Document doc = Jsoup.connect(url).userAgent("Jsoup client").timeout(20000).get();
@@ -155,7 +157,8 @@ public class NKSCharacterCrawler implements BaseCrawler{
                     ObjectMapper mapper = new ObjectMapper();
                     System.out.println(mapper.writeValueAsString(tempChar));
                     writer.write(mapper.writeValueAsString(tempChar));
-                    writer.write(",\n");
+                    if (dem < listURLs.size()) writer.write(",");
+                    writer.write("\n");
                 } catch (IOException err)
                 {
                     err.printStackTrace();

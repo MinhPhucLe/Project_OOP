@@ -38,8 +38,10 @@ public class SitesCrawler implements BaseCrawler{
         List<String> listURLs = getAllSitesURL();
         try(Writer writer = new FileWriter("src/main/java/json/sites.json")){
             writer.write('[');
+            int dem = 0;
             for(String url : listURLs){
                 try {
+                    dem++;
                     Document doc = Jsoup.connect(url).userAgent("Jsoup client").timeout(20000).get();
                     String name = doc.select("h3").get(0).text();
                     String desc = doc.select("div.card-body").get(1).text();
@@ -80,7 +82,8 @@ public class SitesCrawler implements BaseCrawler{
                     ObjectMapper mapper = new ObjectMapper();
                     System.out.println(mapper.writeValueAsString(tempSites));
                     writer.write(mapper.writeValueAsString(tempSites));
-                    writer.write(",\n");
+                    if (dem != 189) writer.write(",");
+                    writer.write("\n");
 
                 }catch(IOException err){
                     err.printStackTrace();

@@ -16,7 +16,14 @@ public class Main {
         TVLSEvents crawl4 = new TVLSEvents();
         crawl4.crawlData();
         */
-        MainScreen main = new MainScreen();
-        main.on(args);
+        //MainScreen main = new MainScreen();
+        //main.on(args);
+
+        //TVLSEvents crawl4 = new TVLSEvents();
+        //crawl4.crawlData();
+        //TVLSCharacterCrawler crawl5 = new TVLSCharacterCrawler();
+        //crawl5.crawlData();
+        NKSCharacterCrawler crawl = new NKSCharacterCrawler();
+        crawl.crawlData();
     }
 }
