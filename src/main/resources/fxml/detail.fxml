@@ -1,17 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <content>
-      <VBox>
-         <children>
-            <Button mnemonicParsing="false" onAction="#pressBackBtn" text="Back" />
-            <Label text="SomeThing" />
-         </children>
-      </VBox>
-   </content>
-</ScrollPane>
+<VBox fx:id="pane" prefHeight="768.0" prefWidth="768.0" stylesheets="@../css/detail.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane fx:id="detail" fitToWidth="true" prefHeight="768.0" prefWidth="768.0">
+         <content>
+            <VBox fx:id="box">
+               <children>
+                  <BorderPane>
+                     <left>
+                        <FontAwesomeIcon fill="#c42d1c" glyphName="ARROW_LEFT" onMouseClicked="#pressBackBtn" size="30px" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets left="10.0" top="4.0" />
+                           </BorderPane.margin>
+                        </FontAwesomeIcon>
+                     </left>
+                     <right>
+                        <FontAwesomeIcon fill="#c42d1c" glyphName="HOME" onMouseClicked="#goHome" size="34px" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets right="10.0" top="8.0" />
+                           </BorderPane.margin>
+                        </FontAwesomeIcon>
+                     </right>
+                  </BorderPane>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="name" alignment="CENTER" text="Label" textAlignment="CENTER" textFill="SIENNA" wrapText="true">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

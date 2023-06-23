@@ -26,7 +26,7 @@ public class CharacterServiceImp implements CharacterService {
     @Override
     public Map<String,Object> getCharacterByName(String name){
         CharacterModel model = characterRepository.getCharacterByName(name);
-        return model == null ? new HashMap<>() : model.getMapDescription();
+        return model == null ? new HashMap<>() : model.MapDescription();
     }
 
 }

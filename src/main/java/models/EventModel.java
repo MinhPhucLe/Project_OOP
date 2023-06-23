@@ -36,9 +36,9 @@ public class EventModel extends BaseModel implements CustomInfo{
         this.time = time;
     }
 
-    public void Events() {};
+    public EventModel() {};
 
-    public void Events(String name, String time, String description, List<String> relativeChar, List<String> relativeSite) {
+    public EventModel(String name, String time, String description, List<String> relativeChar, List<String> relativeSite) {
         super.name = name;
         super.desc = description;
         this.time = time;
@@ -47,12 +47,12 @@ public class EventModel extends BaseModel implements CustomInfo{
     }
 
     @Override
-    public String getUrl() {
+    public String Url() {
         return UrlContainer.SU_KIEN_URL + '/' + name;
     }
 
     @Override
-    public Map<String ,Object> getMapDescription(){
+    public Map<String ,Object> MapDescription(){
         Map<String,Object> res = new HashMap<>();
         res.put("name",name );
         res.put("desc",desc);

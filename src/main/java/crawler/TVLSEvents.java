@@ -114,12 +114,7 @@ public class TVLSEvents implements BaseCrawler {
                             }
                         }
                     }
-                    EventModel tempEvent = new EventModel();
-                    tempEvent.setName(name);
-                    tempEvent.setTime(time);
-                    tempEvent.setDesc(description);
-                    tempEvent.setRelativeChar(tmpChar);
-                    tempEvent.setRelativeSite(tmpSite);
+                    EventModel tempEvent = new EventModel(name,time,description,tmpChar,tmpSite);
                     ObjectMapper mapper = new ObjectMapper();
                     System.out.println(mapper.writeValueAsString(tempEvent));
                     writer.write(mapper.writeValueAsString(tempEvent));

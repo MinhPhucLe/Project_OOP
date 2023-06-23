@@ -1,8 +1,60 @@
-#searchTf {
-    -fx-border-color: red;
-}
-
-#root {
+#pane {
     -fx-background-image: url("../image/list-background.png");
     -fx-background-size: cover;
+    -fx-font-family: "Times New Roman",sans-serif;
+}
+.scroll-pane {
+    -fx-hbar-policy: never;
+    -fx-padding: 1.0;
+    -fx-background : transparent ;
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #c42d1c ;
+    -fx-background-radius: 5em;
+}
+
+#searchTf {
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: rgb(196, 164, 132,0.55);
+}
+
+#option {
+    -fx-font-size: 14px;
+}
+
+.menu:hover {
+    -fx-background-color: transparent;
+}
+.menu:focused {
+    -fx-background-color: transparent;
+}
+.menu:showing {
+    -fx-background-color: transparent;
+}
+
+.choice-box {
+    -fx-background-color: rgb(215,184,135,0.8);
+    -fx-background-radius: 8px;
+    -fx-text-fill: rgb(160,82,45);
+    -fx-font-size: 14px;
 }

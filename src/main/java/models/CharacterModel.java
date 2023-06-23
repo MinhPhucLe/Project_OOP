@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import util.UrlContainer;
 
 import java.util.*;
@@ -46,13 +47,13 @@ public class CharacterModel extends BaseModel implements CustomInfo{
                 '}';
     }
 
+    @JsonIgnore
     @Override
-    public String getUrl(){
+    public String Url(){
         return UrlContainer.NHAN_VAT_URL + '/' +  name;
     }
-
     @Override
-    public Map<String ,Object> getMapDescription(){
+    public Map<String ,Object> MapDescription(){
         Map<String,Object> res = new HashMap<>();
         res.put("name",name );
         res.put("desc",desc);

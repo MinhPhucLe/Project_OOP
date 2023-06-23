@@ -27,6 +27,6 @@ public class EventServiceImp implements EventService {
     @Override
     public Map<String, Object> getEventByName(String name) {
         EventModel model = eventRepository.getEventByName(name);
-        return model == null ? new HashMap<>() : model.getMapDescription();
+        return model == null ? new HashMap<>() : model.MapDescription();
     }
 }

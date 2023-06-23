@@ -40,12 +40,12 @@ public class DynastyModel extends BaseModel implements CustomInfo{
     }
 
     @Override
-    public String getUrl() {
+    public String Url() {
         return UrlContainer.THOI_KY_URL + '/' + name;
     }
 
     @Override
-    public Map<String, Object> getMapDescription() {
+    public Map<String, Object> MapDescription() {
         Map<String,Object> res = new HashMap<>();
         res.put("name",name );
         res.put("desc",desc);

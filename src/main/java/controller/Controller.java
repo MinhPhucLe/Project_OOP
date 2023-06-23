@@ -25,8 +25,12 @@ public class Controller {
         controller.setOption();
         controller.addList();
     }
-    public void addDetailPage(){
+    public void addDetailPage(String url){
         DetailController controller = new DetailController();
+        String name = url.split("/")[2];
+        controller.setName(name);
+        controller.setUrl(url);
+        controller.loadInfo();
         controller.add(layout);
     }
     public void resetScreen(){
@@ -36,31 +40,31 @@ public class Controller {
     public void moveToURL(String url , boolean back){
         if(!back) urls.addLast(url);
         resetScreen();
-        generateFromUrl(url, "");
+        generateFromUrl(url);
     }
     public void back(){
         urls.removeLast();
         if(this.urls.size() > 0) moveToURL(urls.getLast(),true);
     }
 
-    public void generateFromUrl(String url , String searchVal){
+    public void generateFromUrl(String url){
         // Home
         if(url.equalsIgnoreCase(UrlContainer.HOME_URL)) addHomePage();
         // List and Detail
-        if(url.equalsIgnoreCase(UrlContainer.NHAN_VAT_URL)) addListPage("Nhân vật lịch sử",UrlContainer.NHAN_VAT_URL );
-        else if(url.contains(UrlContainer.NHAN_VAT_URL)) addDetailPage();
+        if(url.equalsIgnoreCase(UrlContainer.NHAN_VAT_URL)) addListPage("Nhân vật lịch sử",url );
+        else if(url.contains(UrlContainer.NHAN_VAT_URL)) addDetailPage(url);
 
-        if(url.equalsIgnoreCase(UrlContainer.THOI_KY_URL)) addListPage("Thời kỳ lịch sử",UrlContainer.THOI_KY_URL);
-        else if(url.contains(UrlContainer.THOI_KY_URL)) addDetailPage();
+        if(url.equalsIgnoreCase(UrlContainer.THOI_KY_URL)) addListPage("Thời kỳ lịch sử",url);
+        else if(url.contains(UrlContainer.THOI_KY_URL)) addDetailPage(url);
 
-        if(url.equalsIgnoreCase(UrlContainer.SU_KIEN_URL)) addListPage("Sự kiện lịch sử",UrlContainer.SU_KIEN_URL);
-        else if(url.contains(UrlContainer.SU_KIEN_URL)) addDetailPage();
+        if(url.equalsIgnoreCase(UrlContainer.SU_KIEN_URL)) addListPage("Sự kiện lịch sử",url);
+        else if(url.contains(UrlContainer.SU_KIEN_URL)) addDetailPage(url);
 
-        if(url.equalsIgnoreCase(UrlContainer.DIA_DANH_URL)) addListPage("Địa điểm lịch sử",UrlContainer.DIA_DANH_URL);
-        else if(url.contains(UrlContainer.DIA_DANH_URL)) addDetailPage();
+        if(url.equalsIgnoreCase(UrlContainer.DIA_DANH_URL)) addListPage("Địa điểm lịch sử",url);
+        else if(url.contains(UrlContainer.DIA_DANH_URL)) addDetailPage(url);
 
 //        if(url.equalsIgnoreCase(UrlContainer.LE_HOI_URL)) addListPage("Lễ hội văn hóa");
-//        else if(url.contains(UrlContainer.LE_HOI_URL)) addDetailPage();
+//        else if(url.contains(UrlContainer.LE_HOI_URL)) addDetailPage(url);
 
 
     }

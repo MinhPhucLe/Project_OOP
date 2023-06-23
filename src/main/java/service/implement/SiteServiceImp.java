@@ -26,6 +26,6 @@ public class SiteServiceImp implements SiteService {
     @Override
     public Map<String, Object> getSiteByName(String name) {
         SiteModel model = siteRepository.getSiteByName(name);
-        return model == null ? new HashMap<>() : model.getMapDescription();
+        return model == null ? new HashMap<>() : model.MapDescription();
     }
 }

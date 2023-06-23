@@ -31,6 +31,6 @@ public class DynastyServiceImp implements DynastyService {
     @Override
     public Map<String, Object> getDynastyByName(String name) {
         DynastyModel model = dynastyRepository.getDynastyByName(name);
-        return model == null ? new HashMap<>() : model.getMapDescription();
+        return model == null ? new HashMap<>() : model.MapDescription();
     }
 }

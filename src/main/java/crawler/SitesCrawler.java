@@ -5,6 +5,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import models.SiteModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

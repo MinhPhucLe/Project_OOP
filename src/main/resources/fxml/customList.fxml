@@ -4,6 +4,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,50 +14,90 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="768.0" stylesheets="@../css/customList.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="pane" prefHeight="768.0" prefWidth="768.0" stylesheets="@../css/customList.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox>
-               <children>
-                  <FontAwesomeIcon fill="#c42d1c" glyphName="ARROW_LEFT" onMouseClicked="#goBack" size="30">
-                     <HBox.margin>
-                        <Insets left="4.0" />
-                     </HBox.margin></FontAwesomeIcon>
-               </children>
-            </HBox>
+            <BorderPane>
+               <left>
+                  <FontAwesomeIcon fill="#c42d1c" glyphName="ARROW_LEFT" onMouseClicked="#goBack" size="30px" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="10.0" top="4.0" />
+                     </BorderPane.margin>
+                  </FontAwesomeIcon>
+               </left>
+               <right>
+                  <MenuBar nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+                    <menus>
+                      <Menu mnemonicParsing="false">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#showTime" text="Show/Hide Timeline" />
+                        </items>
+                           <graphic>
+                              <FontAwesomeIcon fill="#c42d1c" glyphName="ELLIPSIS_V" size="32px" />
+                           </graphic>
+                      </Menu>
+                    </menus>
+                     <BorderPane.margin>
+                        <Insets top="6.0" />
+                     </BorderPane.margin>
+                  </MenuBar>
+               </right>
+            </BorderPane>
             <VBox alignment="CENTER">
                <children>
-                  <Label fx:id="title" text="PAGE TITLE">
+                  <Label fx:id="title" text="PAGE TITLE" textFill="SADDLEBROWN">
                      <font>
                         <Font size="36.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="4.0" />
+                     </padding>
                   </Label>
-                  <Label fx:id="amount" text="Result " />
                   <ChoiceBox fx:id="option" prefWidth="150.0" />
+                  <Label fx:id="amount" text="Result " textFill="SADDLEBROWN">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children>
             </VBox>
-            <HBox alignment="CENTER_LEFT">
+            <HBox alignment="CENTER">
                <children>
-                  <FontAwesomeIcon fill="#02c7d1" glyphName="SEARCH" size="28px">
+                  <FontAwesomeIcon fill="SIENNA" glyphName="SEARCH" size="36px">
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets bottom="2.0" left="-14.0" right="6.0" />
                      </HBox.margin>
                   </FontAwesomeIcon>
-                  <TextField fx:id="searchTf" onKeyReleased="#search" prefHeight="36.0" prefWidth="686.0">
+                  <TextField fx:id="searchTf" onKeyReleased="#search" prefHeight="40.0" prefWidth="680.0">
                      <font>
                         <Font size="16.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="16.0" />
+                        <Insets />
                      </HBox.margin>
                   </TextField>
                </children>
+               <padding>
+                  <Insets bottom="20.0" top="10.0" />
+               </padding>
             </HBox>
          </children>
       </VBox>
    </top>
    <center>
-      <ScrollPane fx:id="box" />
+      <ScrollPane fx:id="box" fitToWidth="true" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </ScrollPane>
    </center>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
 </BorderPane>

@@ -14,8 +14,8 @@ import service.implement.*;
 import util.UrlContainer;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.*;
+import java.text.Normalizer;
 
 public class CustomListController {
     @FXML
@@ -25,12 +25,13 @@ public class CustomListController {
     @FXML
     private TextField searchTf;
     @FXML
-    private BorderPane root;
+    private BorderPane pane;
     @FXML
     private ScrollPane box;
     @FXML
     private ChoiceBox<String> option;
     private String url;
+    private boolean show = false;
     private String[] characterOption = { "By name" };
     private String[] dynastyOption = { "By name"};
     private String[] eventOption = { "By name"};
@@ -40,7 +41,11 @@ public class CustomListController {
     private EventService eventService = EventServiceImp.getInstance();
     private SiteService siteService = SiteServiceImp.getInstance();
     public void add(VBox box){
-        box.getChildren().add(root);
+        box.getChildren().add(pane);
+    }
+
+    public String Normalization(String s){
+        return Normalizer.normalize(s,Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").toLowerCase().replaceAll("\\s{2,}", " ").trim();
     }
 
     public void addList(){
@@ -52,8 +57,9 @@ public class CustomListController {
             List<CharacterModel>models = characterService.getAllCharacter();
             sortListCharacter(models, option.getValue());
             for (CharacterModel model : models){
-                if(model.getName().contains(searchTf.getText()) && !model.getName().isBlank()){
-                    controller.addList(model.getName());
+                if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
+                    if(show) controller.addList(model.getName(),model,url);
+                    else controller.addList(model.getName());
                     num_model++;
                 }
             }
@@ -61,8 +67,9 @@ public class CustomListController {
             List<DynastyModel>models = dynastyService.getAllDynasty();
             sortListDynasty(models,option.getValue());
             for (DynastyModel model : models){
-                if(model.getName().contains(searchTf.getText()) && !model.getName().isBlank()){
-                    controller.addList(model.getName());
+                if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
+                    if(show) controller.addList(model.getName(),model,url);
+                    else controller.addList(model.getName());
                     num_model++;
                 }
             }
@@ -71,8 +78,9 @@ public class CustomListController {
             List<EventModel>models = eventService.getALlEvent();
             sortListEvent(models , option.getValue());
             for (EventModel model : models){
-                if(model.getName().contains(searchTf.getText()) && !model.getName().isBlank()){
-                    controller.addList(model.getName());
+                if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
+                    if(show) controller.addList(model.getName() , model,url);
+                    else controller.addList(model.getName());
                     num_model++;
                 }
             }
@@ -80,8 +88,9 @@ public class CustomListController {
             List<SiteModel>models = siteService.getAllSite();
             sortListSite(models,option.getValue());
             for (SiteModel model : models){
-                if(model.getName().contains(searchTf.getText()) && !model.getName().isBlank()){
-                    controller.addList(model.getName());
+                if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
+                    if(show) controller.addList(model.getName(),model,url);
+                    else controller.addList(model.getName());
                     num_model++;
                 }
             }
@@ -134,7 +143,7 @@ public class CustomListController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/customList.fxml"));
         loader.setController(this);
         try {
-            root = loader.load();
+            pane = loader.load();
         }catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -155,6 +164,11 @@ public class CustomListController {
     public void getSortedList(ActionEvent event){
         addList();
     }
+    @FXML
+    public void showTime(ActionEvent event) {
+        show = !show;
+        addList();
+    }
     public void setTitle(String s){
         title.setText(s);
     }
@@ -162,7 +176,8 @@ public class CustomListController {
         searchTf.setText(s);
     }
     public void setAmount(int num){
-        amount.setText("( " + num + " results )");
+        if(num > 1) amount.setText("( " + num + " results )");
+        else amount.setText("( " + num + " result )");
     }
     public void setUrl(String url){
         this.url = url;

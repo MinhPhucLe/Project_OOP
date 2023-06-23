@@ -8,9 +8,10 @@ import javafx.event.*;
 import org.example.MainScreen;
 
 public class ObjectController  {
-    private HBox root;
     @FXML
-    private Label name;
+    private Button root;
+
+    private String name;
     public ObjectController(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/object.fxml"));
         loader.setController(this);
@@ -24,10 +25,13 @@ public class ObjectController  {
     public void add(VBox box){
         box.getChildren().add(root);
     }
-    public void setName(String s){ name.setText(s); }
+    public void setTitle(String s){ root.setText(s); }
+    public void setName(String name){
+        this.name = name;
+    }
 
     @FXML
-    public void showDetail(MouseEvent e ){
+    public void showDetail(ActionEvent e ){
         MainScreen.callUrl(MainScreen.getCurrentUrl() + '/' + name);
     }
 

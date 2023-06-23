@@ -39,7 +39,7 @@ public class SiteModel extends BaseModel implements CustomInfo{
     }
 
     @Override
-    public Map<String, Object> getMapDescription() {
+    public Map<String, Object> MapDescription() {
         Map<String , Object> res = new HashMap<>();
         res.put("name",name);
         res.put("desc",desc);
@@ -49,7 +49,7 @@ public class SiteModel extends BaseModel implements CustomInfo{
     }
 
     @Override
-    public String getUrl() {
+    public String Url() {
         return UrlContainer.DIA_DANH_URL + name;
     }
 }

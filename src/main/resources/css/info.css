@@ -1,0 +1,9 @@
+#title {
+    -fx-font-size: 24px;
+    -fx-text-fill: #a52a2a;
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-color: #A52A2A ;
+    -fx-border-width: 4;
+    -fx-padding: 0 0 6 0;
+
+}

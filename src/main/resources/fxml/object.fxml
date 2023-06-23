@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showDetail" prefHeight="40.0" prefWidth="500.0" style="-fx-border-color: red;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label fx:id="name" text="Name " />
-   </children>
-</HBox>
+
+<Button fx:id="root" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#showDetail" prefHeight="60.0" prefWidth="600.0" stylesheets="@../css/object.css" text="Button" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" />

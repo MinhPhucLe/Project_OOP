@@ -1,38 +1,60 @@
 package controller;
 
-import javafx.application.Platform;
 import javafx.fxml.*;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.event.*;
-import org.example.MainScreen;
+import models.*;
 import util.UrlContainer;
 
-import java.io.IOException;
 
 public class ListController {
     @FXML
-    private VBox root;
+    private VBox list;
 
     public ListController(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/list.fxml"));
         loader.setController(this);
         try{
-            root = loader.load();
+            list = loader.load();
         }catch (Exception e){
             throw new RuntimeException(e);
         }
     }
     public void add(ScrollPane box){
-        box.setContent(root);
+        box.setContent(list);
     }
     public void addList(String name ){
         ObjectController controller = new ObjectController();
+        controller.setTitle(name);
         controller.setName(name);
-        controller.add(root);
+        controller.add(list);
+    }
+    public void addList(String name , Object o , String url){
+        ObjectController controller = new ObjectController();
+        String res = "";
+        if(url.contains(UrlContainer.NHAN_VAT_URL)){
+            CharacterModel model = (CharacterModel)o;
+            res += name + " ( " + model.getNamSinh() + " - " + model.getNamMat() + " ) ";
+        }
+        else if(url.contains(UrlContainer.SU_KIEN_URL)){
+            EventModel model = (EventModel)o;
+            res += name +  " ( " + model.getTime() + " ) ";
+        }
+        else if(url.contains(UrlContainer.THOI_KY_URL)){
+            DynastyModel model = (DynastyModel)o;
+            res += name +  " ( " + model.getTime() + " ) ";
+        }
+        else if(url.contains(UrlContainer.DIA_DANH_URL)){
+        }
+        else if(url.contains(UrlContainer.LE_HOI_URL)){
+
+        }
+        controller.setTitle(res);
+        controller.setName(name);
+        controller.add(list);
     }
     public void resetList(){
-        root.getChildren().clear();
+        list.getChildren().clear();
     }
 }

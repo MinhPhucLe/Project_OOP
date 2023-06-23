@@ -7,3 +7,9 @@ https://websparrow.org/misc/how-to-pass-vm-arguments-in-eclipse-ide
 >**For Intellij:**<br>
 <code> Run > Edit Configurations... > Modify options > Add VM options </code> <br>
 You should see another field generated for the VM option
+
+# Add fontawesome to your UI design 
+
+<code> File > Project Structure > Libraries > Add fontawesomefx-8.2.jar </code>
+
+
