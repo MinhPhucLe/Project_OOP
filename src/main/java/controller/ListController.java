@@ -45,10 +45,9 @@ public class ListController {
             DynastyModel model = (DynastyModel)o;
             res += name +  " ( " + model.getTime() + " ) ";
         }
-        else if(url.contains(UrlContainer.DIA_DANH_URL)){
-        }
         else if(url.contains(UrlContainer.LE_HOI_URL)){
-
+            FestivalModel model = (FestivalModel)o;
+            res += name +  " ( " + model.getTime() + " ) ";
         }
         controller.setTitle(res);
         controller.setName(name);

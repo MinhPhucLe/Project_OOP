@@ -63,8 +63,8 @@ public class Controller {
         if(url.equalsIgnoreCase(UrlContainer.DIA_DANH_URL)) addListPage("Địa điểm lịch sử",url);
         else if(url.contains(UrlContainer.DIA_DANH_URL)) addDetailPage(url);
 
-//        if(url.equalsIgnoreCase(UrlContainer.LE_HOI_URL)) addListPage("Lễ hội văn hóa");
-//        else if(url.contains(UrlContainer.LE_HOI_URL)) addDetailPage(url);
+        if(url.equalsIgnoreCase(UrlContainer.LE_HOI_URL)) addListPage("Lễ hội văn hóa",url);
+        else if(url.contains(UrlContainer.LE_HOI_URL)) addDetailPage(url);
 
 
     }

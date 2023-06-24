@@ -1,6 +1,11 @@
 package models;
 
-public class FestivalModel extends BaseModel {
+import util.UrlContainer;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class FestivalModel extends BaseModel implements CustomInfo{
     private String location;
     private String time;
     public FestivalModel(String name, String time, String location, String description) {
@@ -30,5 +35,19 @@ public class FestivalModel extends BaseModel {
         super.desc = null;
         this.time = null;
         this.location = null;
+    }
+    @Override
+    public String Url() {
+        return UrlContainer.LE_HOI_URL + '/' + name;
+    }
+
+    @Override
+    public Map<String ,Object> MapDescription(){
+        Map<String,Object> res = new HashMap<>();
+        res.put("name",name );
+        res.put("desc",desc);
+        res.put("time",time);
+        res.put("location",location);
+        return res;
     }
 }

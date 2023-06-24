@@ -36,10 +36,12 @@ public class CustomListController {
     private String[] dynastyOption = { "By name"};
     private String[] eventOption = { "By name"};
     private String[] siteOption = { "By name"};
+    private String[] festivalOption = { "By name"};
     private CharacterService characterService = CharacterServiceImp.getInstance();
     private DynastyService dynastyService = DynastyServiceImp.getInstance();
     private EventService eventService = EventServiceImp.getInstance();
     private SiteService siteService = SiteServiceImp.getInstance();
+    private FestivalService festivalService = FestivalServiceImp.getInstance();
     public void add(VBox box){
         box.getChildren().add(pane);
     }
@@ -89,13 +91,20 @@ public class CustomListController {
             sortListSite(models,option.getValue());
             for (SiteModel model : models){
                 if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
-                    if(show) controller.addList(model.getName(),model,url);
-                    else controller.addList(model.getName());
+                    controller.addList(model.getName());
                     num_model++;
                 }
             }
         }else if(url.equals(UrlContainer.LE_HOI_URL)){
-
+            List<FestivalModel>models = festivalService.getAllFestival();
+            sortListFestival(models,option.getValue());
+            for (FestivalModel model : models){
+                if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
+                    if(show) controller.addList(model.getName() , model,url);
+                    else controller.addList(model.getName());
+                    num_model++;
+                }
+            }
         }
         setAmount(num_model);
     }
@@ -139,6 +148,14 @@ public class CustomListController {
             });
         }
     }
+    public void sortListFestival(List<FestivalModel>model , String sortOption){
+        if(sortOption.equals("By name")){
+            Collections.sort(model, new Comparator<FestivalModel>() {
+                @Override
+                public int compare(FestivalModel o1, FestivalModel o2) { return o1.getName().compareTo(o2.getName()); }
+            });
+        }
+    }
     public CustomListController(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/customList.fxml"));
         loader.setController(this);
@@ -172,9 +189,6 @@ public class CustomListController {
     public void setTitle(String s){
         title.setText(s);
     }
-    public void setSearchTf(String s){
-        searchTf.setText(s);
-    }
     public void setAmount(int num){
         if(num > 1) amount.setText("( " + num + " results )");
         else amount.setText("( " + num + " result )");
@@ -188,6 +202,7 @@ public class CustomListController {
         else if(url.equals(UrlContainer.THOI_KY_URL)) option.getItems().addAll(dynastyOption);
         else if(url.equals(UrlContainer.SU_KIEN_URL)) option.getItems().addAll(eventOption);
         else if(url.equals(UrlContainer.DIA_DANH_URL)) option.getItems().addAll(siteOption);
+        else if(url.equals(UrlContainer.LE_HOI_URL)) option.getItems().addAll(festivalOption);
         option.setOnAction(this::getSortedList);
     }
 }

@@ -7,10 +7,7 @@ import javafx.scene.input.*;
 import models.*;
 import service.*;
 import org.example.MainScreen;
-import service.implement.CharacterServiceImp;
-import service.implement.DynastyServiceImp;
-import service.implement.EventServiceImp;
-import service.implement.SiteServiceImp;
+import service.implement.*;
 import util.UrlContainer;
 
 
@@ -29,6 +26,7 @@ public class DetailController {
     private DynastyService dynastyService = DynastyServiceImp.getInstance();
     private EventService eventService = EventServiceImp.getInstance();
     private SiteService siteService = SiteServiceImp.getInstance();
+    private FestivalService festivalService = FestivalServiceImp.getInstance();
     @FXML
     public void pressBackBtn(MouseEvent event){
         MainScreen.back();
@@ -52,6 +50,7 @@ public class DetailController {
         else if(url.contains(UrlContainer.SU_KIEN_URL)) value = eventService.getEventByName(name.getText());
         else if(url.contains(UrlContainer.THOI_KY_URL)) value = dynastyService.getDynastyByName(name.getText());
         else if(url.contains(UrlContainer.DIA_DANH_URL)) value = siteService.getSiteByName(name.getText());
+        else if(url.contains(UrlContainer.LE_HOI_URL)) value = festivalService.getFestivalByName(name.getText());
         for(Map.Entry<String,Object> m : value.entrySet()){
             if(m.getKey().equals("name")) continue;
             InfoController controller = new InfoController();
@@ -65,13 +64,14 @@ public class DetailController {
             }
             else if(m.getKey().equals("time")){
                 if(url.contains(UrlContainer.THOI_KY_URL)) controller.setTitle("Niên đại");
-                else if(url.contains(UrlContainer.SU_KIEN_URL)) controller.setTitle("Thời gian diễn ra");
+                else if(url.contains(UrlContainer.SU_KIEN_URL) || url.contains(UrlContainer.LE_HOI_URL)) controller.setTitle("Thời gian diễn ra");
             }
             else if(m.getKey().equals("kings")) controller.setTitle("Các đời vua");
             else if(m.getKey().equals("relativeChar")) controller.setTitle("Nhân vật liên quan");
             else if(m.getKey().equals("relativeSite")) controller.setTitle("Địa danh liên quan");
             else if(m.getKey().equals("relatedEvents")) controller.setTitle("Sự kiện liên quan");
             else if(m.getKey().equals("relatedCharacters")) controller.setTitle("Nhân vật liên quan");
+            else if(m.getKey().equals("location")) controller.setTitle("Địa điểm");
             controller.setValue(m.getValue());
         }
     }
