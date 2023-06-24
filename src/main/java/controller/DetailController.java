@@ -37,6 +37,10 @@ public class DetailController {
     public void goHome(MouseEvent event) {
         MainScreen.callUrl(UrlContainer.HOME_URL);
     }
+    @FXML
+    public void test(MouseEvent event) {
+        MainScreen.callUrl("/nhan-vat/An Dương Vương");
+    }
     public DetailController(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/detail.fxml"));
         loader.setController(this);
@@ -67,12 +71,22 @@ public class DetailController {
                 if(url.contains(UrlContainer.THOI_KY_URL)) controller.setTitle("Niên đại");
                 else if(url.contains(UrlContainer.SU_KIEN_URL)) controller.setTitle("Thời gian diễn ra");
             }
-            else if(m.getKey().equals("kings")) controller.setTitle("Các đời vua");
-            else if(m.getKey().equals("relativeChar")) controller.setTitle("Nhân vật liên quan");
-            else if(m.getKey().equals("relativeSite")) controller.setTitle("Địa danh liên quan");
-            else if(m.getKey().equals("relatedEvents")) controller.setTitle("Sự kiện liên quan");
-            else if(m.getKey().equals("relatedCharacters")) controller.setTitle("Nhân vật liên quan");
-            controller.setValue(m.getValue());
+            if (m.getKey().equals("kings")) {
+                controller.setTitle("Các đời vua");
+                controller.setValue(m.getValue(), "/nhan-vat");
+            } else if (m.getKey().equals("relativeChar")) {
+                controller.setTitle("Nhân vật liên quan");
+                controller.setValue(m.getValue(), "/nhan-vat");
+            } else if (m.getKey().equals("relativeSite")) {
+                controller.setTitle("Địa danh liên quan");
+                controller.setValue(m.getValue(), "/dia-danh");
+            } else if (m.getKey().equals("relatedEvents")) {
+                controller.setTitle("Sự kiện liên quan");
+                controller.setValue(m.getValue(), "/su-kien");
+            } else if (m.getKey().equals("relatedCharacters")) {
+                controller.setTitle("Nhân vật liên quan");
+                controller.setValue(m.getValue(), "/nhan-vat");
+            }
         }
     }
     public void add(VBox box){

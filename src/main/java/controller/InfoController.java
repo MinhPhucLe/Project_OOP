@@ -32,24 +32,62 @@ public class InfoController {
         title.setText(s);
     }
 
-    public void setValue(Object o){
+    public void setValue(Object o, String urlType){
 
         if(o instanceof String){
-            Label value = new Label((String)o);
-            value.setWrapText(true);
-            value.setStyle("-fx-text-fill: rgb(160,82,45);\n" +
-                    "    -fx-font-size: 16px;\n" +
-                    "    -fx-padding: 10 20 10 20;");
-            info.getChildren().add(value);
+            Button button = new Button((String) o);
+            button.setStyle("-fx-background-color: transparent;" +
+                    "-fx-border-color: transparent;" +
+                    "-fx-text-fill: rgb(160,82,45);" +
+                    "-fx-font-size: 16px;" +
+                    "-fx-padding: 6 20 6 20;");
+            button.setWrapText(true);
+            button.setOnMouseEntered(event -> {
+                button.setStyle("-fx-background-color: rgba(160,82,45,0.1);" +
+                        "-fx-border-color: transparent;" +
+                        "-fx-text-fill: rgb(160,82,45);" +
+                        "-fx-font-size: 16px;" +
+                        "-fx-padding: 6 20 6 20;");
+            });
+            button.setOnMouseExited(event -> {
+                button.setStyle("-fx-background-color: transparent;" +
+                        "-fx-border-color: transparent;" +
+                        "-fx-text-fill: rgb(160,82,45);" +
+                        "-fx-font-size: 16px;" +
+                        "-fx-padding: 6 20 6 20;");
+            });
+            button.setOnMouseClicked(event -> {
+                MainScreen.callUrl(urlType +"/"+ button.getText());
+            });
+            info.getChildren().add(button);
         }
-        else if(o instanceof List<?>){
-            for(Object data : (ArrayList)o){
-                Label value = new Label((String)data);
-                value.setStyle("-fx-text-fill: rgb(160,82,45);\n" +
-                        "    -fx-font-size: 16px;\n" +
-                        "-fx-padding: 6 20 6 20");
-                value.setWrapText(true);
-                info.getChildren().add(value);
+        else if (o instanceof List<?>) {
+            for (Object data : (ArrayList<?>) o) {
+                Button button = new Button((String) data);
+                button.setStyle("-fx-background-color: transparent;" +
+                        "-fx-border-color: transparent;" +
+                        "-fx-text-fill: rgb(160,82,45);" +
+                        "-fx-font-size: 16px;" +
+                        "-fx-padding: 6 20 6 20;");
+                button.setWrapText(true);
+                button.setOnMouseEntered(event -> {
+                    button.setStyle("-fx-background-color: rgba(160,82,45,0.1);" +
+                            "-fx-border-color: transparent;" +
+                            "-fx-text-fill: rgb(160,82,45);" +
+                            "-fx-font-size: 16px;" +
+                            "-fx-padding: 6 20 6 20;");
+                });
+                button.setOnMouseExited(event -> {
+                    button.setStyle("-fx-background-color: transparent;" +
+                            "-fx-border-color: transparent;" +
+                            "-fx-text-fill: rgb(160,82,45);" +
+                            "-fx-font-size: 16px;" +
+                            "-fx-padding: 6 20 6 20;");
+                });
+                button.setOnMouseClicked(event -> {
+                    MainScreen.callUrl(urlType +"/"+ button.getText());
+                });
+                info.getChildren().add(button);
             }
         }
     }
