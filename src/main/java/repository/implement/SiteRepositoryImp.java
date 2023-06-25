@@ -45,7 +45,7 @@ public class SiteRepositoryImp implements SiteRepository , Repository {
     public SiteModel getSiteByName(String name, boolean isContained) {
         if(isContained){
             for(SiteModel model : models){
-                if(model.getName().contains(name))
+                if(name.contains(model.getName()) && !model.getName().isEmpty())
                     return model;
             }
         }

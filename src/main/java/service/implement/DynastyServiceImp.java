@@ -33,4 +33,9 @@ public class DynastyServiceImp implements DynastyService {
         DynastyModel model = dynastyRepository.getDynastyByName(name);
         return model == null ? new HashMap<>() : model.MapDescription();
     }
+    @Override
+    public Map<String, Object>getDynastyByName(String name , boolean isContained){
+        DynastyModel model = dynastyRepository.getDynastyByName(name,isContained);
+        return model == null ? new HashMap<>() : model.MapDescription();
+    }
 }

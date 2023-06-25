@@ -45,7 +45,7 @@ public class EventRepositoryImp implements EventRepository , Repository {
     public EventModel getEventByName(String name, boolean isContained) {
         if(isContained){
             for(EventModel model : models){
-                if(model.getName().contains(name))
+                if(name.contains(model.getName()) && !model.getName().isEmpty())
                     return model;
             }
         }

@@ -60,6 +60,8 @@ public class DetailController {
             if(m.getKey().equals("name")) continue;
             InfoController controller = new InfoController();
             controller.add(box);
+            String urlType = "";
+            // No anchor link
             if(m.getKey().equals("namSinh")) controller.setTitle("Năm sinh");
             else if(m.getKey().equals("namMat")) controller.setTitle("Năm mất");
             else if(m.getKey().equals("desc")){
@@ -71,22 +73,25 @@ public class DetailController {
                 if(url.contains(UrlContainer.THOI_KY_URL)) controller.setTitle("Niên đại");
                 else if(url.contains(UrlContainer.SU_KIEN_URL)) controller.setTitle("Thời gian diễn ra");
             }
+            // Have anchor link
             if (m.getKey().equals("kings")) {
                 controller.setTitle("Các đời vua");
-                controller.setValue(m.getValue(), "/nhan-vat");
+                urlType = UrlContainer.NHAN_VAT_URL;
             } else if (m.getKey().equals("relativeChar")) {
                 controller.setTitle("Nhân vật liên quan");
-                controller.setValue(m.getValue(), "/nhan-vat");
+                urlType = UrlContainer.NHAN_VAT_URL;
             } else if (m.getKey().equals("relativeSite")) {
                 controller.setTitle("Địa danh liên quan");
-                controller.setValue(m.getValue(), "/dia-danh");
+                urlType = UrlContainer.DIA_DANH_URL;
             } else if (m.getKey().equals("relatedEvents")) {
                 controller.setTitle("Sự kiện liên quan");
-                controller.setValue(m.getValue(), "/su-kien");
+                urlType = UrlContainer.SU_KIEN_URL;
             } else if (m.getKey().equals("relatedCharacters")) {
                 controller.setTitle("Nhân vật liên quan");
-                controller.setValue(m.getValue(), "/nhan-vat");
+                urlType = UrlContainer.NHAN_VAT_URL;
             }
+            if(urlType.isEmpty()) controller.setValue(m.getValue());
+            else controller.setValue(m.getValue(),urlType);
         }
     }
     public void add(VBox box){

@@ -50,6 +50,6 @@ public class SiteModel extends BaseModel implements CustomInfo{
 
     @Override
     public String Url() {
-        return UrlContainer.DIA_DANH_URL + name;
+        return UrlContainer.DIA_DANH_URL + '/' + name;
     }
 }
