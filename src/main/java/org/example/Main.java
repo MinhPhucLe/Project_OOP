@@ -15,8 +15,8 @@ public class Main {
 //        crawl4.crawlData();
 //        TVLSCharacterCrawler crawl5 = new TVLSCharacterCrawler();
 //        crawl5.crawlData();
-//        NKSCharacterCrawler crawl6 = new NKSCharacterCrawler();
-//        crawl6.crawlData();
+       NKSCharacterCrawler crawl6 = new NKSCharacterCrawler();
+        crawl6.crawlData();
 
         MainScreen main = new MainScreen();
         main.on(args);
