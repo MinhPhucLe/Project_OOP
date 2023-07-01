@@ -46,7 +46,7 @@ public class DynastyRepositoryImp implements DynastyRepository , Repository {
     public DynastyModel getDynastyByName(String name, boolean isContained) {
         if(isContained){
             for(DynastyModel model : models){
-                if(model.getName().contains(name))
+                if(name.contains(model.getName()) && !model.getName().isEmpty())
                     return model;
             }
         }

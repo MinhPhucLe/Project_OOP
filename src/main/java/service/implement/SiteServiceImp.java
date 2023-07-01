@@ -28,4 +28,10 @@ public class SiteServiceImp implements SiteService {
         SiteModel model = siteRepository.getSiteByName(name);
         return model == null ? new HashMap<>() : model.MapDescription();
     }
+
+    @Override
+    public Map<String, Object> getSiteByName(String name, boolean isContained) {
+        SiteModel model = siteRepository.getSiteByName(name,isContained);
+        return model == null ? new HashMap<>() : model.MapDescription();
+    }
 }

@@ -47,7 +47,7 @@ public class CharacterRepositoryImp implements CharacterRepository , Repository 
     public CharacterModel getCharacterByName(String name , boolean isContained){
         if(isContained){
             for(CharacterModel model : models){
-                if(model.getName().contains(name))
+                if(name.contains(model.getName()) && !model.getName().isEmpty())
                     return model;
             }
         }

@@ -35,6 +35,10 @@ public class DetailController {
     public void goHome(MouseEvent event) {
         MainScreen.callUrl(UrlContainer.HOME_URL);
     }
+    @FXML
+    public void test(MouseEvent event) {
+        MainScreen.callUrl("/nhan-vat/An Dương Vương");
+    }
     public DetailController(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/detail.fxml"));
         loader.setController(this);
@@ -55,6 +59,8 @@ public class DetailController {
             if(m.getKey().equals("name")) continue;
             InfoController controller = new InfoController();
             controller.add(box);
+            String urlType = "";
+            // No anchor link
             if(m.getKey().equals("namSinh")) controller.setTitle("Năm sinh");
             else if(m.getKey().equals("namMat")) controller.setTitle("Năm mất");
             else if(m.getKey().equals("desc")){
@@ -66,13 +72,25 @@ public class DetailController {
                 if(url.contains(UrlContainer.THOI_KY_URL)) controller.setTitle("Niên đại");
                 else if(url.contains(UrlContainer.SU_KIEN_URL) || url.contains(UrlContainer.LE_HOI_URL)) controller.setTitle("Thời gian diễn ra");
             }
-            else if(m.getKey().equals("kings")) controller.setTitle("Các đời vua");
-            else if(m.getKey().equals("relativeChar")) controller.setTitle("Nhân vật liên quan");
-            else if(m.getKey().equals("relativeSite")) controller.setTitle("Địa danh liên quan");
-            else if(m.getKey().equals("relatedEvents")) controller.setTitle("Sự kiện liên quan");
-            else if(m.getKey().equals("relatedCharacters")) controller.setTitle("Nhân vật liên quan");
-            else if(m.getKey().equals("location")) controller.setTitle("Địa điểm");
-            controller.setValue(m.getValue());
+            // Have anchor link
+            if (m.getKey().equals("kings")) {
+                controller.setTitle("Các đời vua");
+                urlType = UrlContainer.NHAN_VAT_URL;
+            } else if (m.getKey().equals("relativeChar")) {
+                controller.setTitle("Nhân vật liên quan");
+                urlType = UrlContainer.NHAN_VAT_URL;
+            } else if (m.getKey().equals("relativeSite")) {
+                controller.setTitle("Địa danh liên quan");
+                urlType = UrlContainer.DIA_DANH_URL;
+            } else if (m.getKey().equals("relatedEvents")) {
+                controller.setTitle("Sự kiện liên quan");
+                urlType = UrlContainer.SU_KIEN_URL;
+            } else if (m.getKey().equals("relatedCharacters")) {
+                controller.setTitle("Nhân vật liên quan");
+                urlType = UrlContainer.NHAN_VAT_URL;
+            }
+            if(urlType.isEmpty()) controller.setValue(m.getValue());
+            else controller.setValue(m.getValue(),urlType);
         }
     }
     public void add(VBox box){
