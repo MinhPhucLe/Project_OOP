@@ -18,7 +18,7 @@ public class NKSCharacterCrawler implements BaseCrawler{
     private final String BASE_URL = "https://nguoikesu.com/";
     public List<String> getAllCharacterURL(){
         List<String> listURLs = new ArrayList<String>();
-        for(int page = 0; page < NUM_OF_PAGES; ++page) {
+        for(int page = 0; page < 291; ++page) {
             try {
                Document doc = Jsoup.connect(BASE_URL + "nhan-vat?start=" + Integer.toString(page * 5)).userAgent("Jsoup client").timeout(20000).get();
 
@@ -57,7 +57,7 @@ public class NKSCharacterCrawler implements BaseCrawler{
                     CharacterModel tempChar = new CharacterModel();
                     String name = doc.select("div.page-header h2").text();
                     //System.out.println(name);
-                    Elements articleBody = doc.select("div[itemprop=articleBody]");
+                    Elements articleBody = doc.select("div.com-content-article__body");
                     Elements infoBox = articleBody.select("div.infobox");
                     String namSinh = "Không rõ";
                     String namMat = "Không rõ";
