@@ -18,8 +18,11 @@ public class Main {
        NKSCharacterCrawler crawl6 = new NKSCharacterCrawler();
         crawl6.crawlData();
 
-        MainScreen main = new MainScreen();
-        main.on(args);
-
+        ///MainScreen main = new MainScreen();
+        ///main.on(args);
+        NKSCharacterCrawler s1 = new NKSCharacterCrawler();
+        s1.crawlData();
+        TVLSCCharacter s2 = new TVLSCCharacter();
+        s2.crawlData();
     }
 }
