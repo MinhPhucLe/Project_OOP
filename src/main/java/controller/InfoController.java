@@ -107,8 +107,12 @@ public class InfoController {
                 url = model.Url();
                 new_name = model.getName();
             }
-        } else {
-            url = "";
+        } else  if(urlType.contains(UrlContainer.LE_HOI_URL)){
+            DynastyModel model = dynastyRepository.getDynastyByName(name,true);
+            if(model != null){
+                url = model.Url();
+                new_name = model.getName();
+            }
         }
         if(!new_name.isEmpty()) button.setText(new_name);
         if(!url.isEmpty()) {

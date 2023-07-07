@@ -23,6 +23,7 @@ public class Controller {
         controller.add(layout);
         controller.setUrl(url);
         controller.setOption();
+        controller.generateList();
         controller.addList();
     }
     public void addDetailPage(String url){

@@ -47,7 +47,7 @@ public class FestivalRepositoryImp implements FestivalRepository , Repository {
     public FestivalModel getFestivalByName(String name, boolean isContained) {
         if(isContained){
             for(FestivalModel model : models){
-                if(model.getName().contains(name))
+                if(name.contains(model.getName()) && !model.getName().isEmpty())
                     return model;
             }
         }

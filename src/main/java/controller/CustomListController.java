@@ -42,6 +42,13 @@ public class CustomListController {
     private EventService eventService = EventServiceImp.getInstance();
     private SiteService siteService = SiteServiceImp.getInstance();
     private FestivalService festivalService = FestivalServiceImp.getInstance();
+
+    List<CharacterModel>characterModels ;
+    List<DynastyModel>dynastyModels;
+    List<SiteModel>siteModels;
+    List<EventModel>eventModels;
+    List<FestivalModel>festivalModels;
+
     public void add(VBox box){
         box.getChildren().add(pane);
     }
@@ -49,16 +56,20 @@ public class CustomListController {
     public String Normalization(String s){
         return Normalizer.normalize(s,Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").toLowerCase().replaceAll("\\s{2,}", " ").trim();
     }
-
+    public void generateList(){
+        if(url.contains(UrlContainer.NHAN_VAT_URL)) characterModels = characterService.getAllCharacter();
+        else if(url.contains(UrlContainer.THOI_KY_URL)) dynastyModels = dynastyService.getAllDynasty();
+        else if(url.contains(UrlContainer.SU_KIEN_URL)) eventModels = eventService.getALlEvent();
+        else if(url.contains(UrlContainer.DIA_DANH_URL)) siteModels = siteService.getAllSite();
+        else if(url.contains(UrlContainer.LE_HOI_URL)) festivalModels = festivalService.getAllFestival();
+    }
     public void addList(){
         ListController controller = new ListController();
-        controller.resetList();
         controller.add(box);
         int num_model = 0;
         if(url.equals(UrlContainer.NHAN_VAT_URL)) {
-            List<CharacterModel>models = characterService.getAllCharacter();
-            sortListCharacter(models, option.getValue());
-            for (CharacterModel model : models){
+            sortListCharacter(characterModels, option.getValue());
+            for (CharacterModel model : characterModels){
                 if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
                     if(show) controller.addList(model.getName(),model,url);
                     else controller.addList(model.getName());
@@ -66,9 +77,8 @@ public class CustomListController {
                 }
             }
         } else if(url.equals(UrlContainer.THOI_KY_URL)){
-            List<DynastyModel>models = dynastyService.getAllDynasty();
-            sortListDynasty(models,option.getValue());
-            for (DynastyModel model : models){
+            sortListDynasty(dynastyModels,option.getValue());
+            for (DynastyModel model : dynastyModels){
                 if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
                     if(show) controller.addList(model.getName(),model,url);
                     else controller.addList(model.getName());
@@ -77,9 +87,8 @@ public class CustomListController {
             }
         }
         else if(url.equals(UrlContainer.SU_KIEN_URL)){
-            List<EventModel>models = eventService.getALlEvent();
-            sortListEvent(models , option.getValue());
-            for (EventModel model : models){
+            sortListEvent(eventModels , option.getValue());
+            for (EventModel model : eventModels){
                 if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
                     if(show) controller.addList(model.getName() , model,url);
                     else controller.addList(model.getName());
@@ -87,18 +96,16 @@ public class CustomListController {
                 }
             }
         }else if(url.equals(UrlContainer.DIA_DANH_URL)){
-            List<SiteModel>models = siteService.getAllSite();
-            sortListSite(models,option.getValue());
-            for (SiteModel model : models){
+            sortListSite(siteModels,option.getValue());
+            for (SiteModel model : siteModels){
                 if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
                     controller.addList(model.getName());
                     num_model++;
                 }
             }
         }else if(url.equals(UrlContainer.LE_HOI_URL)){
-            List<FestivalModel>models = festivalService.getAllFestival();
-            sortListFestival(models,option.getValue());
-            for (FestivalModel model : models){
+            sortListFestival(festivalModels,option.getValue());
+            for (FestivalModel model : festivalModels){
                 if(Normalization(model.getName()).contains(Normalization(searchTf.getText())) && !model.getName().isBlank()){
                     if(show) controller.addList(model.getName() , model,url);
                     else controller.addList(model.getName());

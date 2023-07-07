@@ -72,6 +72,7 @@ public class DetailController {
                 if(url.contains(UrlContainer.THOI_KY_URL)) controller.setTitle("Niên đại");
                 else if(url.contains(UrlContainer.SU_KIEN_URL) || url.contains(UrlContainer.LE_HOI_URL)) controller.setTitle("Thời gian diễn ra");
             }
+            else if(m.getKey().equals("location"))controller.setTitle("Địa điểm");
             // Have anchor link
             if (m.getKey().equals("kings")) {
                 controller.setTitle("Các đời vua");

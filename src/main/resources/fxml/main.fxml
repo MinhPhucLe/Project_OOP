@@ -48,7 +48,7 @@
    <top>
       <HBox fx:id="box" alignment="TOP_RIGHT" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" text="Group 12" textFill="#f75050">
+            <Label alignment="CENTER" text="Group 6" textFill="#f75050">
                <font>
                   <Font size="24.0" />
                </font>
