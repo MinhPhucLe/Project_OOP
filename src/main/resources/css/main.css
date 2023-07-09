@@ -3,9 +3,9 @@
     -fx-background-size: cover;
 }
 .button {
-    -fx-background-color: rgb(196, 164, 132,0.55) ;
+    -fx-background-color: rgb(196, 164, 132,0.6) ;
     -fx-font-size: 28px;
-    -fx-text-fill: #fafafa;
+    -fx-text-fill: #464646;
     -fx-font-family: "Times New Roman",sans-serif;
     -fx-max-width: 400px;
     -fx-border-radius: 12px;
@@ -13,5 +13,5 @@
     -fx-cursor: hand;
 }
 .button:hover{
-    -fx-background-color: rgb(196, 164, 132,0.95);
+    -fx-background-color: rgb(196, 164, 132);
 }
