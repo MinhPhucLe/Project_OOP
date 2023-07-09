@@ -3,9 +3,8 @@ package controller;
 import javafx.fxml.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
-import javafx.event.*;
 import models.*;
-import util.UrlContainer;
+import data.util.UrlContainer;
 
 
 public class ListController {
@@ -13,7 +12,7 @@ public class ListController {
     private VBox list;
 
     public ListController(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/list.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/list.fxml"));
         loader.setController(this);
         try{
             list = loader.load();

@@ -6,12 +6,12 @@ import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import models.*;
-import org.example.MainScreen;
+import gui.MainScreen;
 import service.CharacterService;
 
 import service.*;
 import service.implement.*;
-import util.UrlContainer;
+import data.util.UrlContainer;
 
 import java.io.IOException;
 import java.util.*;
@@ -164,7 +164,7 @@ public class CustomListController {
         }
     }
     public CustomListController(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/customList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customList.fxml"));
         loader.setController(this);
         try {
             pane = loader.load();

@@ -1,6 +1,5 @@
-package org.example;
-import crawler.*;
-import models.CharacterModel;
+package gui;
+
 public class Main {
     public static void main(String[] args) {
 //        TVLSCharacterCrawler crawl1 = new TVLSCharacterCrawler();

@@ -1,6 +1,6 @@
 package models;
 
-import util.UrlContainer;
+import data.util.UrlContainer;
 
 import java.util.HashMap;
 import java.util.Map;

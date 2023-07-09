@@ -2,13 +2,11 @@ package controller;
 import javafx.fxml.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
-import javafx.event.*;
 import javafx.scene.input.*;
-import models.*;
 import service.*;
-import org.example.MainScreen;
+import gui.MainScreen;
 import service.implement.*;
-import util.UrlContainer;
+import data.util.UrlContainer;
 
 
 import java.util.*;
@@ -40,7 +38,7 @@ public class DetailController {
         MainScreen.callUrl("/nhan-vat/An Dương Vương");
     }
     public DetailController(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/detail.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/detail.fxml"));
         loader.setController(this);
         try {
             pane = loader.load();

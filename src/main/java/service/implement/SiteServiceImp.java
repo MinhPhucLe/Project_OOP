@@ -30,8 +30,7 @@ public class SiteServiceImp implements SiteService {
     }
 
     @Override
-    public Map<String, Object> getSiteByName(String name, boolean isContained) {
-        SiteModel model = siteRepository.getSiteByName(name,isContained);
-        return model == null ? new HashMap<>() : model.MapDescription();
+    public SiteModel getSiteByName(String name, boolean isContained) {
+        return siteRepository.getSiteByName(name,isContained);
     }
 }

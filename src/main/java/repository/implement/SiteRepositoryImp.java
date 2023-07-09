@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import models.SiteModel;
 import repository.SiteRepository;
 import repository.Repository;
-import util.JsonURL;
+import data.util.JsonURL;
 
 import java.io.File;
 import java.util.*;

@@ -1,4 +1,4 @@
-package org.example;
+package gui;
 
 import repository.Repository;
 import repository.implement.*;

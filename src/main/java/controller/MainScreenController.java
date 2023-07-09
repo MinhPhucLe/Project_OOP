@@ -6,15 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
-import org.example.MainScreen;
-import util.UrlContainer;
+import gui.MainScreen;
+import data.util.UrlContainer;
 
-import java.io.IOException;
 public class MainScreenController {
     private BorderPane box;
 
     public MainScreenController(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main.fxml"));
         loader.setController(this);
         try {
             box = loader.load();

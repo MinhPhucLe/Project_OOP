@@ -28,8 +28,7 @@ public class FestivalServiceImp implements FestivalService {
         return model == null ? new HashMap<>() : model.MapDescription();
     }
     @Override
-    public Map<String, Object> getFestivalByName(String name, boolean isContained) {
-        FestivalModel model = festivalRepository.getFestivalByName(name,isContained);
-        return model == null ? new HashMap<>() : model.MapDescription();
+    public FestivalModel getFestivalByName(String name, boolean isContained) {
+        return festivalRepository.getFestivalByName(name,isContained);
     }
 }

@@ -2,7 +2,7 @@ package controller;
 
 import javafx.fxml.*;
 import javafx.scene.layout.*;
-import util.UrlContainer;
+import data.util.UrlContainer;
 
 import java.util.*;
 

@@ -1,11 +1,10 @@
 package controller;
 
 import javafx.fxml.*;
-import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.event.*;
-import org.example.MainScreen;
+import gui.MainScreen;
 
 public class ObjectController  {
     @FXML
@@ -13,7 +12,7 @@ public class ObjectController  {
 
     private String name;
     public ObjectController(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/object.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/object.fxml"));
         loader.setController(this);
         try {
             root = loader.load();

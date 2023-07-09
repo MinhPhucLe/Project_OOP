@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import models.CharacterModel;
 import repository.CharacterRepository;
 import repository.Repository;
-import util.JsonURL;
+import data.util.JsonURL;
 
 import java.io.File;
 import java.util.*;

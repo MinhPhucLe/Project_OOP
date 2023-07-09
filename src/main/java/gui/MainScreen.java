@@ -1,4 +1,4 @@
-package org.example;
+package gui;
 
 import controller.Controller;
 import javafx.application.Application;
@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import util.UrlContainer;
+import data.util.UrlContainer;
 
 import java.io.IOException;
 
@@ -24,7 +24,7 @@ public class MainScreen extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/layout.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/layout.fxml"));
             controller = new Controller();
             loader.setController(controller);
             Parent root = loader.load();

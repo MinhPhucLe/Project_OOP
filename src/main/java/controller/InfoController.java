@@ -5,11 +5,13 @@ import javafx.scene.Cursor;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import models.*;
-import org.example.MainScreen;
+import service.*;
+import service.implement.*;
+import gui.MainScreen;
 import repository.*;
 import repository.implement.*;
 
-import util.UrlContainer;
+import data.util.UrlContainer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +22,13 @@ public class InfoController {
     private Label title;
     @FXML
     private VBox info;
-    private CharacterRepository characterRepository = CharacterRepositoryImp.getInstance();
-    private DynastyRepository dynastyRepository = DynastyRepositoryImp.getInstance();
-    private EventRepository eventRepository = EventRepositoryImp.getInstance();
-    private SiteRepository siteRepository = SiteRepositoryImp.getInstance();
+    private CharacterService characterService = CharacterServiceImp.getInstance();
+    private DynastyService dynastyService = DynastyServiceImp.getInstance();
+    private EventService eventService = EventServiceImp.getInstance();
+    private SiteService siteService = SiteServiceImp.getInstance();
+    private FestivalService festivalService = FestivalServiceImp.getInstance();
     public InfoController(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/info.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/info.fxml"));
         loader.setController(this);
         try {
             info = loader.load();
@@ -84,31 +87,31 @@ public class InfoController {
                     "-fx-padding: 6 20 6 20;");
         });
         if(urlType.contains(UrlContainer.NHAN_VAT_URL)){
-            CharacterModel model = characterRepository.getCharacterByName(name,true);
+            CharacterModel model = characterService.getCharacterByName(name,true);
             if(model != null){
                 url = model.Url();
                 new_name = model.getName();
             }
         }else if(urlType.contains(UrlContainer.SU_KIEN_URL)){
-            EventModel model = eventRepository.getEventByName(name,true);
+            EventModel model = eventService.getEventByName(name,true);
             if(model != null){
                 url = model.Url();
                 new_name = model.getName();
             }
         }else if(urlType.contains(UrlContainer.DIA_DANH_URL)){
-            SiteModel model = siteRepository.getSiteByName(name,true);
+            SiteModel model = siteService.getSiteByName(name,true);
             if(model != null){
                 url = model.Url();
                 new_name = model.getName();
             }
         }else if(urlType.contains(UrlContainer.THOI_KY_URL)){
-            DynastyModel model = dynastyRepository.getDynastyByName(name,true);
+            DynastyModel model = dynastyService.getDynastyByName(name,true);
             if(model != null){
                 url = model.Url();
                 new_name = model.getName();
             }
         } else  if(urlType.contains(UrlContainer.LE_HOI_URL)){
-            DynastyModel model = dynastyRepository.getDynastyByName(name,true);
+            FestivalModel model = festivalService.getFestivalByName(name,true);
             if(model != null){
                 url = model.Url();
                 new_name = model.getName();

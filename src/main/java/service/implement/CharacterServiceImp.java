@@ -30,8 +30,7 @@ public class CharacterServiceImp implements CharacterService {
     }
 
     @Override
-    public Map<String, Object> getCharacterByName(String name, boolean isContained) {
-        CharacterModel model = characterRepository.getCharacterByName(name , isContained);
-        return model == null ? new HashMap<>() : model.MapDescription();
+    public CharacterModel getCharacterByName(String name, boolean isContained) {
+        return characterRepository.getCharacterByName(name,isContained);
     }
 }

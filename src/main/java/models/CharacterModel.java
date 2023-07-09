@@ -1,7 +1,7 @@
 package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import util.UrlContainer;
+import data.util.UrlContainer;
 
 import java.util.*;
 

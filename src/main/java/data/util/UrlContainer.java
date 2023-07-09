@@ -1,4 +1,4 @@
-package util;
+package data.util;
 
 public class UrlContainer {
     public static final String HOME_URL = "/home";
