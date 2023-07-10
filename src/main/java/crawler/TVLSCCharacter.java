@@ -22,7 +22,7 @@ public class TVLSCCharacter implements BaseCrawler {
         try (Writer writer = new FileWriter("src/main/java/data/TVLSC.json")) {
             writer.write('[');
             int dem = 0;
-            for (int i = 1; i <= 1; ++i) {
+            for (int i = 1; i <= NUM_OF_PAGES; ++i) {
                 try {
                     Document doc;
                     if (i == 1) {
@@ -138,8 +138,8 @@ public class TVLSCCharacter implements BaseCrawler {
                             ObjectMapper mapper = new ObjectMapper();
                             System.out.println(mapper.writeValueAsString(tempChar));
                             writer.write(mapper.writeValueAsString(tempChar));
-                            //if (dem != 418) writer.write(",");
-                            if(dem != 10) writer.write(",");
+                            if (dem != 418) writer.write(",");
+                            //if(dem != 10) writer.write(",");
                             writer.write("\n");
 
                         }

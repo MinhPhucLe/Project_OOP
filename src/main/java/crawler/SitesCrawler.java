@@ -19,7 +19,7 @@ public class SitesCrawler implements BaseCrawler{
     private final String NVLQ = "Nhân vật liên quan";
     public List<String> getAllSitesURL(){
         List<String> listURLs = new ArrayList<String>();
-        for(int page = 1; page <= 1; page++){
+        for(int page = 1; page <= NUM_OF_PAGES; page++){
             try{
                 Document doc = Jsoup.connect(BASE_URL + "/dia-diem?page=" + Integer.toString(page)).userAgent("Jsoup client").timeout(20000).get();
                 Elements elmA = doc.select("a.click");

@@ -19,7 +19,7 @@ public class TVLSEvents implements BaseCrawler {
     private final int NUM_OF_PAGES = 19;
     public List<String> getUrls() {
         List<String> tempUrl = new ArrayList<String>();
-        for (int i = 1; i <= 1; ++ i) {
+        for (int i = 1; i <= NUM_OF_PAGES; ++ i) {
             String x = Integer.toString(i);
             String tmp = baseUrl + x;
             try {

@@ -1,0 +1,148 @@
+@startuml
+class controller.CustomListController {
+- Label title
+- Label amount
+- TextField searchTf
+- BorderPane pane
+- ScrollPane box
+- ChoiceBox<String> option
+- String url
+- boolean show
+- String[] characterOption
+- String[] dynastyOption
+- String[] eventOption
+- String[] siteOption
+- String[] festivalOption
+- CharacterService characterService
+- DynastyService dynastyService
+- EventService eventService
+- SiteService siteService
+- FestivalService festivalService
+~ List<CharacterModel> characterModels
+~ List<DynastyModel> dynastyModels
+~ List<SiteModel> siteModels
+~ List<EventModel> eventModels
+~ List<FestivalModel> festivalModels
++ void add(VBox)
++ String Normalization(String)
++ void generateList()
++ void addList()
++ void sortListCharacter(List<CharacterModel>,String)
++ void sortListDynasty(List<DynastyModel>,String)
++ void sortListEvent(List<EventModel>,String)
++ void sortListSite(List<SiteModel>,String)
++ void sortListFestival(List<FestivalModel>,String)
++ void goBack(MouseEvent)
++ void goHome(MouseEvent)
++ void search(KeyEvent)
++ void getSortedList(ActionEvent)
++ void showTime(ActionEvent)
++ void setTitle(String)
++ void setAmount(int)
++ void setUrl(String)
++ void setOption()
+}
+class gui.Main {
++ {static} void main(String[])
+}
+class controller.MainScreenController {
+- BorderPane box
++ void add(VBox)
++ void NhanVatLichSu(ActionEvent)
++ void ThoiKyLichSu(ActionEvent)
++ void SuKienLichSu(ActionEvent)
++ void DiaDiemLichSu(ActionEvent)
++ void LeHoiVanHoa(ActionEvent)
++ void loadPage(String)
+}
+class controller.ObjectController {
+- Button root
+- String name
++ void add(VBox)
++ void setTitle(String)
++ void setName(String)
++ void showDetail(ActionEvent)
+}
+class gui.CrawlerMain {
+- AnchorPane pane
++ void start(Stage)
++ {static} void main(String[])
+}
+class gui.Program {
+- Repository[] repositories
+}
+class controller.InfoController {
+- Label title
+- VBox info
+- CharacterService characterService
+- DynastyService dynastyService
+- EventService eventService
+- SiteService siteService
+- FestivalService festivalService
++ void add(VBox)
++ void setTitle(String)
++ void setValue(Object)
++ Button anchor(String,String)
++ void setValue(Object,String)
+}
+class controller.Controller {
+- VBox layout
+- Deque<String> urls
++ String getCurrentUrl()
++ void addHomePage()
++ void addListPage(String,String)
++ void addDetailPage(String)
++ void resetScreen()
++ void moveToURL(String,boolean)
++ void back()
++ void generateFromUrl(String)
+}
+class controller.DetailController {
+- VBox pane
+- ScrollPane detail
+- VBox box
+- Label name
+- String url
+- CharacterService characterService
+- DynastyService dynastyService
+- EventService eventService
+- SiteService siteService
+- FestivalService festivalService
++ void pressBackBtn(MouseEvent)
++ void goHome(MouseEvent)
++ void test(MouseEvent)
++ void loadInfo()
++ void add(VBox)
++ void setUrl(String)
++ void setName(String)
+}
+class controller.ListController {
+- VBox list
++ void add(ScrollPane)
++ void addList(String)
++ void addList(String,Object,String)
++ void resetList()
+}
+class controller.CrawlerProgressBarController {
+- ProgressBar myProgressBar
+- Label myLabel
+- Button myButton
+~ BigDecimal progress
+~ int count
++ void initialize(URL,ResourceBundle)
++ void increaseProgress()
+}
+class gui.MainScreen {
+- {static} Controller controller
++ void on(String[])
++ {static} void callUrl(String)
++ {static} void back()
++ {static} String getCurrentUrl()
++ void start(Stage)
+}
+
+
+javafx.application.Application <|-- gui.CrawlerMain
+javafx.fxml.Initializable <|.. controller.CrawlerProgressBarController
+javafx.application.Application <|-- gui.MainScreen
+@enduml

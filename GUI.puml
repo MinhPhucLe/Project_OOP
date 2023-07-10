@@ -1,0 +1,25 @@
+@startuml
+class gui.Main {
++ {static} void main(String[])
+}
+class gui.CrawlerMain {
+- AnchorPane pane
++ void start(Stage)
++ {static} void main(String[])
+}
+class gui.Program {
+- Repository[] repositories
+}
+class gui.MainScreen {
+- {static} Controller controller
++ void on(String[])
++ {static} void callUrl(String)
++ {static} void back()
++ {static} String getCurrentUrl()
++ void start(Stage)
+}
+
+
+javafx.application.Application <|-- gui.CrawlerMain
+javafx.application.Application <|-- gui.MainScreen
+@enduml
