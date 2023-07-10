@@ -16,10 +16,10 @@ import java.util.List;
 public class TVLSEvents implements BaseCrawler {
 
     String baseUrl = "https://thuvienlichsu.vn/su-kien?page=";
-
+    private final int NUM_OF_PAGES = 19;
     public List<String> getUrls() {
         List<String> tempUrl = new ArrayList<String>();
-        for (int i = 1; i <= 19; ++ i) {
+        for (int i = 1; i <= 1; ++ i) {
             String x = Integer.toString(i);
             String tmp = baseUrl + x;
             try {
@@ -40,7 +40,7 @@ public class TVLSEvents implements BaseCrawler {
     public void crawlData() {
         int dem = 0;
         List<String> urls = getUrls();
-        try (Writer writer = new FileWriter("src/main/java/json/TVLSEvents.json")) {
+        try (Writer writer = new FileWriter("src/main/java/data/TVLSEvents.json")) {
             writer.write('[');
             for (String url : urls) {
                 try {
@@ -118,7 +118,7 @@ public class TVLSEvents implements BaseCrawler {
                     ObjectMapper mapper = new ObjectMapper();
                     System.out.println(mapper.writeValueAsString(tempEvent));
                     writer.write(mapper.writeValueAsString(tempEvent));
-                    if (dem != 371) writer.write(",");
+                    if (dem < urls.size()) writer.write(",");
                     writer.write("\n");
                     ///System.out.println("here: " + name);
                 } catch (IOException err) {

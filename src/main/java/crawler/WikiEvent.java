@@ -15,7 +15,7 @@ import java.net.URLDecoder;
 
 public class WikiEvent implements BaseCrawler{
     public void crawlData() {
-        try (Writer writer = new FileWriter("src/main/java/json/WKFestival.json")) {
+        try (Writer writer = new FileWriter("src/main/java/data/WKFestival.json")) {
             writer.write('[');
             int dem = 0;
             try {
@@ -25,7 +25,10 @@ public class WikiEvent implements BaseCrawler{
                 String description = "";
                 String baseUrl = "https://vi.wikipedia.org/wiki/";
                 String url = baseUrl + "Lễ_hội_Việt_Nam";
-                Document doc = Jsoup.connect(url).get();
+                Document doc = Jsoup.connect(url)
+                        .timeout(20000)
+                        .get();
+                System.out.println("1");
                 Elements elements = doc.select("#mw-content-text > div.mw-parser-output > table.prettytable.wikitable > tbody > tr");
                 for (Element element : elements) {
                     dem++;

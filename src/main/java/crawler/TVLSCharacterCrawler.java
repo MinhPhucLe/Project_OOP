@@ -17,7 +17,7 @@ public class TVLSCharacterCrawler implements BaseCrawler {
 
     public List<String> getAllCharacterURL(){
         List<String> listURLs = new ArrayList<String>();
-        for(int page = 1; page <= NUM_OF_PAGES; ++page) {
+        for(int page = 1; page <= 1; ++page) {
             try {
                 Document doc = Jsoup.connect(BASE_URL + "/nhan-vat?page=" + Integer.toString(page)).userAgent("Jsoup client").timeout(20000).get();
 
@@ -39,7 +39,7 @@ public class TVLSCharacterCrawler implements BaseCrawler {
         int entitiesCrawled = 0;
         CharacterModel tempChar = new CharacterModel();
         int dem = 0;
-        try (Writer writer = new FileWriter("src/main/java/json/tvlschar.json")) {
+        try (Writer writer = new FileWriter("src/main/java/data/tvlschar.json")) {
             writer.write('[');
             for (String url : listURLs) {
                 dem++;
@@ -86,7 +86,7 @@ public class TVLSCharacterCrawler implements BaseCrawler {
                 ObjectMapper mapper = new ObjectMapper();
                 System.out.println(mapper.writeValueAsString(tempChar));
                 writer.write(mapper.writeValueAsString(tempChar));
-                if(dem != 809) writer.write(",");
+                if(dem < listURLs.size()) writer.write(",");
                 writer.write("\n");
             }
             writer.write(']');

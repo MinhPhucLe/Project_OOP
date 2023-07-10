@@ -18,7 +18,7 @@ public class NKSCharacterCrawler implements BaseCrawler{
     private final String BASE_URL = "https://nguoikesu.com/";
     public List<String> getAllCharacterURL(){
         List<String> listURLs = new ArrayList<String>();
-        for(int page = 0; page < 291; ++page) {
+        for(int page = 0; page < 1; ++page) {
             try {
                Document doc = Jsoup.connect(BASE_URL + "nhan-vat?start=" + Integer.toString(page * 5)).userAgent("Jsoup client").timeout(20000).get();
 
@@ -47,7 +47,7 @@ public class NKSCharacterCrawler implements BaseCrawler{
         List<String> listURLs = getAllCharacterURL();
         int entitiesCrawled = 0;
         int dem = 0;
-        try(Writer writer = new FileWriter("src/main/java/json/nkschar.json")){
+        try(Writer writer = new FileWriter("src/main/java/data/nkschar.json")){
             writer.write('[');
             for(String url : listURLs){
                 dem++;

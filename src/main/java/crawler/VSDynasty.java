@@ -15,7 +15,7 @@ import java.util.List;
 public class VSDynasty implements BaseCrawler {
 
     public void crawlData() {
-        try (Writer writer = new FileWriter("src/main/java/json/VSDynasty.json")) {
+        try (Writer writer = new FileWriter("src/main/java/data/VSDynasty.json")) {
             writer.write('[');
             Document doc = Jsoup.connect("https://vansu.vn/viet-nam/nien-bieu-lich-su?fbclid=IwAR2ezEDAtHRKdTgjV5PjFTgJpbiVGFKm44mUF8U0m7piCBk_ZhEm206NTNQ").get();
             Elements links = doc.select("body > div.ui.container > div");

@@ -94,9 +94,9 @@ public class CombineCrawler {
 
     public static void main(String[] args) throws IOException, ParseException {
         CombineCrawler crawler = new CombineCrawler();
-        String ob1 = crawler.getStringFile("src/main/java/json/TVLSC.json");
-        String ob2 = crawler.getStringFile("src/main/java/json/nkschar.json");
-        String ob3 = crawler.getStringFile("src/main/java/json/tvlschar.json");
+        String ob1 = crawler.getStringFile("src/main/java/data/TVLSC.json");
+        String ob2 = crawler.getStringFile("src/main/java/data/nkschar.json");
+        String ob3 = crawler.getStringFile("src/main/java/data/tvlschar.json");
         ///StringBuilder res =
         crawler.JsonMerge(ob1, ob2, ob3);
         ///System.out.println("here: " + res);

@@ -17,12 +17,12 @@ public class TVLSCCharacter implements BaseCrawler {
     String username = "root";
     String password = "123";
     String baseUrl = "https://thuvienlichsu.com/category/nhan-vat/";*/
-
+    private final int NUM_OF_PAGES = 42;
     public void crawlData() {
-        try (Writer writer = new FileWriter("src/main/java/json/TVLSC.json")) {
+        try (Writer writer = new FileWriter("src/main/java/data/TVLSC.json")) {
             writer.write('[');
             int dem = 0;
-            for (int i = 1; i <= 42; ++i) {
+            for (int i = 1; i <= 1; ++i) {
                 try {
                     Document doc;
                     if (i == 1) {
@@ -138,7 +138,8 @@ public class TVLSCCharacter implements BaseCrawler {
                             ObjectMapper mapper = new ObjectMapper();
                             System.out.println(mapper.writeValueAsString(tempChar));
                             writer.write(mapper.writeValueAsString(tempChar));
-                            if (dem != 418) writer.write(",");
+                            //if (dem != 418) writer.write(",");
+                            if(dem != 10) writer.write(",");
                             writer.write("\n");
 
                         }
